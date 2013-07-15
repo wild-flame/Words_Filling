@@ -2,10 +2,10 @@ from mylib import *
 import Image
 import os, sys
 
-im = Image.open("test_bit_6.png")
-word = Image.open("baicizhan_small_2.png")
+im = Image.open("test_zhan_6.png")
+word = Image.open("baicizhan_10.png")
 
-R_left,R_up,R_right,R_bottom = [200,200,1800,1800]
+R_left,R_up,R_right,R_bottom = [0,0,2000,2000]
 
 x1 = R_left
 while x1 < R_right:

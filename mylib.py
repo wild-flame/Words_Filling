@@ -17,7 +17,6 @@ def myPaste(x1,y1,im,word):
 	word_pix = word.load()
 	
 	'''Detection if it is able to paste'''
-	
 	flag = 1	
 	for i in range(word_xsize):
 		for j in range(word_ysize):
@@ -25,6 +24,7 @@ def myPaste(x1,y1,im,word):
 				flag = 0
 				break
 
+	'''The paste procedure'''
 	for i in range(word_xsize):
 		for j in range(word_ysize):
 			if flag == 1:
@@ -32,8 +32,8 @@ def myPaste(x1,y1,im,word):
 	return word_xsize, word_ysize
 				
 def myRotate(word):
-	
-	angle = random.uniform(-50, 50)
+	'''Rotate the image'''
+	angle = random.uniform(-80, 80)
 	print angle
 	word = word.rotate(angle, expand = True)
 	return word
