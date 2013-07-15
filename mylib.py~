@@ -33,7 +33,7 @@ def myPaste(x1,y1,im,word):
 				
 def myRotate(word):
 	
-	angle = random.uniform(-50, 50)
+	angle = random.uniform(-10, 10)
 	print angle
 	word = word.rotate(angle, expand = True)
 	return word
