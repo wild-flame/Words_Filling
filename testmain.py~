@@ -1,23 +1,23 @@
-from mylib import *
+from math import *
 import Image
+from mylib import *
 import os, sys
 
-im = Image.open("Freedom_bit_2.png")
-word = Image.open("0010_oilfield.jpg")
+im = Image.open("./data/test_bit_2.png")
+word = Image.open("./data/baicizhan_test.png")
 
-word = myConvert(word)
-
-R_left,R_up,R_right,R_bottom = [600,600,2400,4400]
-
-x1 = R_left
-while x1 < R_right:
-	y1 = R_up
-	print 'x1 ='+ str(x1)
-	while y1 < R_bottom:
-		x_step, y_step = myPaste(x1,y1,im,word)
-		y1 = y1 + y_step
-		print 'y1 ='+ str(y1)
-	x1 = x1 + x_step
+r=0
+angle=0
+rate = 5 # The extend of tightness
+thita = 0
+du = 2*pi/360
+while r<=1300:
+	posX = r * cos(thita+angle*du)
+	posY = r * sin(thita+angle*du)
+	myPaste(int(posX)+1500,int(posY)+3000,im,word)
+	print 'x1 ='+str(posX)+'y1 ='+str(posY)
+	r = 1 + thita*rate
+	thita = thita + du
 
 im.save('test.png')
 
