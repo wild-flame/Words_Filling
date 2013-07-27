@@ -1,0 +1,62 @@
+def myPaste(x1,y1,im,word,angle):
+
+	im_xsize, im_ysize = im.size # Get the image size
+	word = myRotate(word,angle)
+	word_xsize, word_ysize = word.size # Get the word size
+	im_pix = im.load()
+	word_pix = word.load()
+	
+	flag=1
+	'''Detect if it is able to paste'''
+	'''flag == 0 if it is not able to paste'''
+	for i in range(word_xsize):
+		for j in range(word_ysize):
+			if (x1 + i) >= im_xsize or (y1 + j) >= im_ysize: # The word has been out of the image
+				flag = 0
+				break	
+			elif (x1 + i) < im_xsize and (y1 + j) < im_ysize: # The word is in the image but not in the right area.
+				if (im_pix[x1+i,y1+j] == 0 and word_pix[i,j] == 1:
+					flag = 0
+					break
+
+	'''The paste procedure'''
+	for i in range(word_xsize):
+		for j in range(word_ysize):
+			if flag == 1:
+				im_pix[x1+i,y1+j] = (word_pix[i,j] + im_pix[x1+i,y1+j]) % 2 
+	return flag, word_xsize, word_ysize
+
+def myWordFilling(String):
+	x_start,x_end,y_start,y_end = 0,2000,0,2000
+	if String == "Rectangle":
+		while x1<x_end:
+			while y1<y_end:
+				angle=random()
+				flag,x_step,y_step = myPaste(x1,y1,im,word,angle)
+				x1=x1+x_step
+				y1=y1+y_step
+
+	elif String == "Spiral" :
+		#These are arguments which are used for the second walk-through
+		r=0 #The start radius.
+		angle=0 #argv[1]
+		rate = 5 #argv[2] , The extend of tightness
+		thita = 0 #argv[3]
+		du = 2*pi/360 #argv[4]
+		while r < 500:
+		
+	else:
+		print "This is an unknow mode of walk-through"
+
+def myWrite(word,size,angle,position):
+	'''This method write the data into csv or json format'''
+
+
+def myRotate(word, angle):
+	'''Rotate the image'''
+	# print angle
+	word = word.rotate(angle, expand = True)
+	return word
+
+
+

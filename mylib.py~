@@ -27,12 +27,12 @@ def myPaste(x1,y1,im,word):
 			# print x1+i,y1+j
 			if (x1 + i >= im_xsize) or (y1 + j >= im_ysize):
 				flag = 0
-				print 'flag='+str(flag)
+				# print 'flag='+str(flag)
 				break
 			elif (x1 + i < im_xsize) and (y1 + j < im_ysize):
-				if (im_pix[x1+i,y1+j] == 0):
+				if (im_pix[x1+i,y1+j] == 0) and (word_pix[i,j] == 1):
 					flag = 0
-					break		
+					break
 	
 	'''The paste procedure'''
 	for i in range(word_xsize):
@@ -44,17 +44,17 @@ def myPaste(x1,y1,im,word):
 def myRotate(word):
 	'''Rotate the image'''
 	angle = random.uniform(-80,80)
-	# print angle
+	print angle
 	word = word.rotate(angle, expand = True)
 	return word
 	
-def myConvert(im,x_new):
+def myConvert(im,new):
 	'''This is used for convert the image to bit mode and resize it'''
 	'''This script convert the image file to binary mode.'''
 	x_size,y_size = im.size
 	im = im.convert('1')
-	# im = myInvert(im)
-	word = im.resize((x_new,int(float(x_new)/x_size * y_size)))
+	im = myInvert(im)
+	word = im.resize((int(x_size/new),int(y_size/new)))
 	return word
 
 def myInvert(im):
@@ -68,23 +68,24 @@ def myInvert(im):
 				im_pix[i,j] = 0
 	return im
 	
-def mySpirel(r,angle,rate,thita,du,im,pathname,x_new,count):
+def mySpirel(r,angle,rate,thita,du,im,pathname,new,count):
 	'''
 	The Spirel Method
 	The im is the picture
 	the pathname is where the pic are saved and it is a list
 	'''
 	word = Image.open(pathname[count])
-	word = myConvert(word,x_new)
+	word = myConvert(word,new)
 	while r<=800:
 		posX = r * cos(thita+angle*du)
 		posY = r * sin(thita+angle*du)
 		flag=myPaste(int(posX)+1000,int(posY)+1000,im,word)
 		r = 1 + thita*rate
 		thita = thita + du
-		print 'x1 ='+str(posX)+'y1 ='+str(posY)
 		if flag==1:
+			print 'x1 ='+str(posX)+'y1 ='+str(posY)
+			print 'count ='+str(count)
 			count = count + 1;
 			word = Image.open(pathname[count])
-			word = myConvert(word,x_new) #Convert the image to binary and resize it.
+			word = myConvert(word,new) #Convert the image to binary and resize it.
 	return count

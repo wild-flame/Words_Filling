@@ -3,7 +3,7 @@ import Image
 from mylib import *
 import os, sys
 
-im = Image.open("./data/test_bit_2.png")
+im = Image.open("./data/Freedom_bit_2.png")
 
 pathname = []
 srchpath = '../image/data'
@@ -22,11 +22,12 @@ thita = 0
 du = 40*pi/360
 
 count=0
+count=myFilling()
 #count=mySpirel(r,angle,rate,thita,du,im,pathname,250,count)
 #count=mySpirel(r,angle,2,thita,40*pi/360,im,pathname,235,count)
 #count=mySpirel(r,angle,10,thita,20*pi/360,im,pathname,220,count)
 #count=mySpirel(r,angle,10,thita,20*pi/360,im,pathname,210,count)
-count=mySpirel(r,angle,1,thita,2*pi/360,im,pathname,200,count)
+count=mySpirel(r,angle,5,thita,5*pi/360,im,pathname,4,count)
 
 im.save('test.png')
 
