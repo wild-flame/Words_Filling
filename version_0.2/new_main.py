@@ -17,7 +17,7 @@ du = 2*pi/360 #argv[4]
 
 im = Image.open("../data/Freedom_bit_2.png")
 pathname = []
-srchpath = '../../image/data'
+srchpath = '../image/data'
 
 '''Get the every pathname of the data'''
 for root, dirs, files in os.walk(srchpath):

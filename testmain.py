@@ -7,10 +7,10 @@ import os, sys, Image
 im = Image.open("./data/test_bit_2.png")
 word = Image.open("./data/baicizhan_test.png")
 
-r=0 #argv[0]
-angle=0 #argv[1]
-rate = 5 #argv[2] , The extend of tightness
-thita = 0 #argv[3]
+r=1.0 #argv[0]
+angle= 0.0 #argv[1]
+rate = 5.0 #argv[2] , The extend of tightness
+thita = 0.0 #argv[3]
 du = 2*pi/360 #argv[4]
 
 while r<=800:

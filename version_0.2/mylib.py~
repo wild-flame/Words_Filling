@@ -2,31 +2,44 @@ import random,Image,ImageOps
 from math import *
 
 def myPaste(x1,y1,im,word,angle):
+	'''This method is used to add letter to the image'''
 
-	im_xsize, im_ysize = im.size # Get the image size
+	'''Get the image size'''
+	im_xsize, im_ysize = im.size
+
+	'''Rotate the word image randomly'''
 	word = myRotate(word,angle)
-	word_xsize, word_ysize = word.size # Get the word size
+
+	'''Get the word image size'''
+	word_xsize, word_ysize = word.size
+	
+	'''Get every pixel of the picture'''
 	im_pix = im.load()
 	word_pix = word.load()
 	
-	flag=1
-	'''Detect if it is able to paste'''
-	'''flag == 0 if it is not able to paste'''
+	'''Detection if it is able to paste'''
+	flag = 1
+	print 'im_xsize='+str(im_xsize)+'im_ysize'+str(im_ysize)
+	print 'word_xsize='+str(word_xsize)+'word_ysize='+str(word_ysize)
+
 	for i in range(word_xsize):
 		for j in range(word_ysize):
-			if (x1 + i) >= im_xsize or (y1 + j) >= im_ysize: # The word has been out of the image
+			# print x1+i,y1+j
+			if (x1 + i >= im_xsize) or (y1 + j >= im_ysize):
 				flag = 0
-				break	
-			elif (x1 + i) < im_xsize and (y1 + j) < im_ysize: # The word is in the image but not in the right area.
-				if (im_pix[x1+i,y1+j] == 0 and word_pix[i,j] == 1:
+				# print 'flag='+str(flag)
+				break
+			elif (x1 + i < im_xsize) and (y1 + j < im_ysize):
+				if (im_pix[x1+i,y1+j] == 0) and (word_pix[i,j] == 1):
 					flag = 0
 					break
-
+	
 	'''The paste procedure'''
 	for i in range(word_xsize):
 		for j in range(word_ysize):
 			if flag == 1:
-				im_pix[x1+i,y1+j] = (word_pix[i,j] + im_pix[x1+i,y1+j]) % 2 
+				if (im_pix[x1+i,y1+j] == 1) and (word_pix[i,j] == 1):
+					im_pix[x1+i,y1+j] = 0 
 	return flag, word_xsize, word_ysize
 
 def myRotate(word, angle):
@@ -53,20 +66,20 @@ def mySpirel(rate,du,im,pathname,new,count):
 	while r<= R_MAX:
 		posX = r * cos(thita+angle*du)
 		posY = r * sin(thita+angle*du)
-		flag, x_step, y_step =myPaste(int(posX)+START_X,int(posY)+START_Y,im,word)
+		flag, x_step, y_step =myPaste(int(posX)+START_X,int(posY)+START_Y,im,word,random.uniform(-80,80))
 		r = 1 + thita*rate
 		thita = thita + du
 		if flag==1:
 			print 'x1 ='+str(posX)+'y1 ='+str(posY)
 			print 'count ='+str(count)
-			count = count + 1;
+			count = count + 1
 			word = Image.open(pathname[count])
 			word = myConvert(word,new) #Convert the image to binary and resize it.
 	return count
 
-def myRec(im,pathname,probability,count):
+def myRec(im,pathname,probability,count,new):
 	# probability = 1
-	R_left,R_up,R_right,R_bottom = [0,0,2000,2000]
+	R_left,R_up,R_right,R_bottom = [100,100,1900,1900]
 	x1 = R_left
 	word = Image.open(pathname[count])
 	word = myConvert(word,new)
@@ -74,10 +87,10 @@ def myRec(im,pathname,probability,count):
 		y1 = R_up
 		while y1 < R_bottom:
 			word = Image.open(pathname[count])
-			flag, x_step, y_step = myPaste(x1,y1,im,word,angle)
+			flag, x_step, y_step = myPaste(int(x1),int(y1),im,word,random.uniform(-80,80))
 			y1 = y1 + y_step
 			if flag ==1:
-				print 'x1 ='+str(posX)+'y1 ='+str(posY)
+				print 'x1 ='+str(x1)+'y1 ='+str(y1)
 				print 'count ='+str(count)
 				count = count + 1;
 				word = Image.open(pathname[count])

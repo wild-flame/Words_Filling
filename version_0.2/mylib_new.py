@@ -77,8 +77,7 @@ def mySpirel(rate,du,im,pathname,new,count):
 			word = myConvert(word,new) #Convert the image to binary and resize it.
 	return count
 
-def myRec(im,pathname,probability,count,new):
-	# probability = 1
+def myRec(im,pathname,count,new):
 	R_left,R_up,R_right,R_bottom = [100,100,1900,1900]
 	x1 = R_left
 	word = Image.open(pathname[count])

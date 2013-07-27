@@ -1,33 +1,40 @@
 from math import *
-import Image
 from mylib import *
-import os, sys
+import Image, os, sys
 
-im = Image.open("./data/Freedom_bit_2.png")
+"""FIRST STEP: GET THE INPUT ARGUMENT"""
+#These are arguments which are used for the fisrt walk-through
 
+PROBABILITY = 1# The input probability of the fisrt input.
+
+#These are arguments which are used for the second walk-through
+rate = 10.0 # The extend of tightness
+du = 10*pi/360 #
+
+im = Image.open("../data/Freedom_bit_2.png")
 pathname = []
 srchpath = '../image/data'
 
+'''Get the every pathname of the data'''
 for root, dirs, files in os.walk(srchpath):
 	for file in files:
 		pathname[len(pathname):] = [os.path.join(root, file)]
 
-count = 0 # count how many picture has been put in
+word,size,rotate_angle,position = [],[],[],[]
+"""SECOND STEP: INPUT THE PIC FOR THE FISRT TIME(RANDOMLY)"""
+count = 0 #count the pic
+count = myRec(im,pathname,count,RESIZE_SCALE=3)
+count = myRec(im,pathname,count,RESIZE_SCALE=4)
+count = myRec(im,pathname,count,RESIZE_SCALE=5)
 
-'''To change the picture'''
-r=0
-angle=0
-rate = 10 # The extend of tightness
-thita = 0
-du = 40*pi/360
+"""THIRD STEP: INPUT THE PIC FOR THE SECOND TIME(TO PUT THE PIC IN WHITE SPACE)"""
+# count = mySpirel(rate,du,im,pathname,RESIZE_SCALE=6,count,rotate_angle=40,START_X,START_Y)
+for posX in range(1000,1801,800):
+	for posY in range(1000,3401,800):
+		count = mySpirel(rate,du,im,pathname,6,count,-80,posX,posY)
 
-count=0
-count=myFilling()
-#count=mySpirel(r,angle,rate,thita,du,im,pathname,250,count)
-#count=mySpirel(r,angle,2,thita,40*pi/360,im,pathname,235,count)
-#count=mySpirel(r,angle,10,thita,20*pi/360,im,pathname,220,count)
-#count=mySpirel(r,angle,10,thita,20*pi/360,im,pathname,210,count)
-count=mySpirel(r,angle,5,thita,5*pi/360,im,pathname,4,count)
 
+"""FOURTH STEP: OUTPUT THE DATA CSV or JSON"""
 im.save('test.png')
+# myWrite()
 
