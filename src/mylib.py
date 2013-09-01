@@ -1,7 +1,8 @@
-import random,Image,ImageOps
+import random,Image,ImageOps,ImageChops
+import os, csv
 from math import *
 
-def myPaste(x1,y1,im,word, rotate_angle):
+def myPaste(posX,posY,im,word, rotate_angle):
 	'''This method is used to add letter to the image'''
 
 	'''Get the image size'''
@@ -24,13 +25,13 @@ def myPaste(x1,y1,im,word, rotate_angle):
 
 	for i in range(int(word_xsize)):
 		for j in range(int(word_ysize)):
-			# print x1+i,y1+j
-			if (x1 + i >= im_xsize) or (y1 + j >= im_ysize):
+			# print posX+i,posY+j
+			if (posX + i >= im_xsize) or (posY + j >= im_ysize):
 				flag = 0
 				# print 'flag='+str(flag)
 				break
-			elif (x1 + i < im_xsize) and (y1 + j < im_ysize):
-				if (im_pix[x1+i,y1+j] == 0) and (word_pix[i,j] == 1):
+			elif (posX + i < im_xsize) and (posY + j < im_ysize):
+				if (im_pix[posX+i,posY+j] == 0) and (word_pix[i,j] == 1):
 					flag = 0
 					break
 	
@@ -38,7 +39,7 @@ def myPaste(x1,y1,im,word, rotate_angle):
 	for i in range(word_xsize):
 		for j in range(word_ysize):
 			if flag == 1:
-				im_pix[x1+i,y1+j] = ( word_pix[i,j] + im_pix[x1+i,y1+j] ) % 2 
+				im_pix[posX+i,posY+j] = ( word_pix[i,j] + im_pix[posX+i,posY+j] ) % 2 
 	return flag, word_xsize, word_ysize
 				
 def myRotate(word, rotate_angle):
@@ -67,7 +68,7 @@ def myInvert(im):
 				im_pix[i,j] = 0
 	return im
 	
-def mySpirel(rate,du,im,pathname,RESIZE_SCALE,count,rotate_angle,START_X,START_Y):
+def mySpirel(rate,du,im,pathname,RESIZE_SCALE,count,rotate_angle,START_X,START_Y,catalog):
 	'''
 	The Spirel Method
 	The im is the picture
@@ -87,30 +88,54 @@ def mySpirel(rate,du,im,pathname,RESIZE_SCALE,count,rotate_angle,START_X,START_Y
 		r = 1 + thita*rate
 		thita = thita + du
 		if flag==1:
-			print 'x1 ='+str(posX)+'y1 ='+str(posY)
+			print 'posX ='+str(posX)+'posY ='+str(posY)
 			print 'count ='+str(count)
+			print [pathname[count], word.size, (START_X+posX,START_Y+posY), rotate_angle, RESIZE_SCALE]
+			catalog.append([pathname[count], word.size, (START_X+posX,START_Y+posY), rotate_angle, RESIZE_SCALE])
 			count = count + 1;
 			word = Image.open(pathname[count])
 			word = myConvert(word,RESIZE_SCALE) #Convert the image to binary and resize it.
-	return count
+	return count, catalog
 
-def myRec(im,pathname,count,RESIZE_SCALE):
+def myRec(im,pathname,count,RESIZE_SCALE,catalog):
 	R_left,R_up,R_right,R_bottom = [500,900,2300,4400]
-	x1 = R_left
+	posX = R_left
 	word = Image.open(pathname[count])
 	word = myConvert(word,RESIZE_SCALE)
-	while x1 < R_right:
-		y1 = R_up
-		while y1 < R_bottom:
+	while posX < R_right:
+		posY = R_up
+		while posY < R_bottom:
 			rotate_angle = random.uniform(-80,80)
-			flag, x_step, y_step = myPaste(x1,y1,im,word,rotate_angle)
-			y1 = y1 + y_step
-			print 'x1 ='+str(x1)+'y1 ='+str(y1)
+			flag, x_step, y_step = myPaste(posX,posY,im,word,rotate_angle)
 			if flag ==1:	
 				print 'count ='+str(count)
+				print [pathname[count], word.size, (posX,posY), rotate_angle, RESIZE_SCALE]
+				catalog.append([pathname[count], word.size, (posX,posY), rotate_angle, RESIZE_SCALE])
 				count = count + 1;
 				word = Image.open(pathname[count])
 				word = myConvert(word,RESIZE_SCALE) #Convert the image to binary and resize it.
-		x1 = x1 + x_step
-	return count
+			posY = posY + y_step
+			print 'posX ='+str(posX)+'posY ='+str(posY)			
+		posX = posX + x_step
+	return count,catalog
+	
+def myComposite(pic,word_2,position):
+	im = Image.new("RGBA", (3366, 4961), (255,255,255,255))
+	im.paste(pic,(0,0)) 
+	im_2 = Image.new("RGBA", (3366, 4961), (255,255,255,255))
+	im_2.paste(word_2,(int(position[0]),int(position[1]))) 
+	out = ImageChops.multiply(im,im_2) 
+	return out
 
+def myRotateWhite(img,rotate_angle):
+	# converted to have an alpha layer
+	im2 = img.convert('RGBA')
+	# rotated image
+	rot = im2.rotate(rotate_angle, resample=Image.BICUBIC, expand=True)
+	# a white image same size as rotated image
+	fff = Image.new('RGBA', rot.size, (255,)*4)
+	# create a composite image using the alpha layer of rot as a mask
+	out = Image.composite(rot, fff, rot)
+	# save your work (converting back to mode='1' or whatever..)
+	out.convert(img.mode)
+	return out
