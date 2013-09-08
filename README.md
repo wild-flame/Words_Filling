@@ -1,23 +1,10 @@
-<html lang="zh_CN">
-<head>
-<meta charset="utf-8" />
-<titleWord_Fiiling_DOC</title>
-<meta name="author" content="Wildflame" />
-<meta name="description" content=Word_Fiiling_DOC" />
-<link rel="stylesheet" href="http://railstutorial-china.org/assets/styles/style.css" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-</head>
-
-<div class="wrapper">
 
 #DOCUMENTATION
 
-<div class="content">
 
 Word\_Filling简介：
 =====================
 
-<div class="main">
 
 
 功能
@@ -107,7 +94,4 @@ Word\_Filling简介：
 
 
   -	Image Resizing <http://www.jqueryscript.net/layout/jQuery-Plugin-for-Client-Side-Image-Resizing-canvasResize.html>
-  </div>
-  </div>
-  </div>
 
