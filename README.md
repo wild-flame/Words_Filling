@@ -1,10 +1,10 @@
-
 #DOCUMENTATION
 
 
 Word\_Filling简介：
 =====================
 
+I'm translating the documentation currently! The enlish version will come by 16th, Dec.
 
 
 功能
