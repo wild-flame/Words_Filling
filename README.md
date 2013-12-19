@@ -6,9 +6,9 @@ This script manage to fill the words in a certain area of the picture automatica
 
 ## Dependency
 
-Python
+-   Python
 
-PIL - Python Image Library
+-   PIL - Python Image Library
 
 ## Usage
 
@@ -58,13 +58,9 @@ The result generated using computer is good enough to replace human's work.
   -   Image Resizing <http://www.jqueryscript.net/layout/jQuery-Plugin-for-Client-Side-Image-Resizing-canvasResize.html>
 
 --------------------
-# 中文版
+Belows are the CHINESE VERSION of the documentaion
 
-Word\_Filling简介：
-=====================
-
-I'm translating the documentation currently! The enlish version will come by 16th, Dec.
-
+# 中文版文档
 
 功能
 ----
