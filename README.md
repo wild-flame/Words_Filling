@@ -7,13 +7,14 @@ This script manage to fill the words in a certain area of the picture automatica
 ## Dependency
 
 Python
+
 PIL - Python Image Library
 
 ## Usage
 
-Put the words data (jpeg or png format) in '../image/data/*', the script will load data from there automatically.
+Put the words data (jpeg or png format) in '../image/data/', the script will load data from there automatically.
 
-Put the 0-1 digit picture in '../image/xxxxx.jpg', where words can only be written in area valued "1".
+In the meanwhile, put the 0-1 digit picture in '../image/xxxxx.jpg', where words can only be written in area valued "1".
 
 Type in the terminal:
 
@@ -23,7 +24,7 @@ This will automatically generate *"input_data.csv"* and the preview picture name
 
 Then you can type in the terminal
 
-    **$ python Generate_new_pic.py**
+    $ python Generate_new_pic.py
 
 It generate the new picture based on *"input_data.csv"*.
 
@@ -31,16 +32,17 @@ It generate the new picture based on *"input_data.csv"*.
 
   <img src='image/test_csv.png' width=100% />
 
-Here is a picture filled manually by  
+HERE IS A PICTURE FILLED MANUALLY:
 
   <img src='image/01-0001~0142.jpg' width=100% />
+
+The result generated using computer is good enough to replace human's work.
 
 ## References：
 
   -   The Python Imaging Library Handbook
   [http://effbot.org/imagingbook/](http://effbot.org/imagingbook/)
-  -   
-  [http://blog.sina.com.cn/s/blog\_4b5039210100f6ki.html](http://blog.sina.com.cn/s/blog_4b5039210100f6ki.html)
+  -   [http://blog.sina.com.cn/s/blog\_4b5039210100f6ki.html](http://blog.sina.com.cn/s/blog_4b5039210100f6ki.html)
   -   How to become a proficient Python programmer
   [http://www.zhizhihu.com/html/y2011/3093.html](http://www.zhizhihu.com/html/y2011/3093.html)
   -   How to put picture date into arrays
@@ -124,8 +126,6 @@ Algorithm的思路
   对比手工排版的原图：
 
   <img src='image/01-0001~0142.jpg' width=100% />
-
-  ----------------------
 
 ## 参考资料：
 
