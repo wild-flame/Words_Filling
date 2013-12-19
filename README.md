@@ -14,7 +14,7 @@ This script manage to fill the words in a certain area of the picture automatica
 
 Put the words data (jpeg or png format) in '../image/data/', the script will load data from there automatically.
 
-In the meanwhile, put the 0-1 digit picture (This means every pixel has only two value - 0 & 1) in '../image/xxxxx.jpg'. (Words can only be filled in pixel valued "1").
+In the meanwhile, put the 0-1 digit picture (This means every pixel has only two value - 0 & 1) in '../image/xxxxx.jpg'. (Words can only be filled in pixel valued "1".)
 
 Type in the terminal:
 
