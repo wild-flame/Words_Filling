@@ -14,13 +14,13 @@ This script manage to fill the words in a certain area of the picture automatica
 
 Put the words data (jpeg or png format) in '../image/data/', the script will load data from there automatically.
 
-In the meanwhile, put the 0-1 digit picture in '../image/xxxxx.jpg', where words can only be written in area valued "1".
+In the meanwhile, put the 0-1 digit picture (This means every pixel has only two value - 0 & 1) in '../image/xxxxx.jpg'. (Words can only be filled in pixel valued "1").
 
 Type in the terminal:
 
     $ python main.py
 
-This will automatically generate *"input_data.csv"* and the preview picture named "test.png".
+This will automatically generate *"input_data.csv"* and the preview picture named *"test.png"*.
 
 Then you can type in the terminal
 
