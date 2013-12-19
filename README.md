@@ -1,8 +1,13 @@
-#DOCUMENTATION
+# DOCUMENTATION
 
 ## Introduction
 
 This script manage to fill the words in a certain area of the picture automatically.
+
+## Dependency
+
+Python
+PIL - Python Image Library
 
 ## Usage
 
@@ -22,7 +27,7 @@ Then you can type in the terminal
 
 It generate the new picture based on *"input_data.csv"*.
 
-## The demo results 
+## The Demo Results 
 
   <img src='image/test_csv.png' width=100% />
 
@@ -30,30 +35,28 @@ Here is a picture filled manually by
 
   <img src='image/01-0001~0142.jpg' width=100% />
 
-## Reference：
+## References：
 
-  -   官方文档
+  -   The Python Imaging Library Handbook
   [http://effbot.org/imagingbook/](http://effbot.org/imagingbook/)
-  -   数字图像处理PIL的一个实例
+  -   
   [http://blog.sina.com.cn/s/blog\_4b5039210100f6ki.html](http://blog.sina.com.cn/s/blog_4b5039210100f6ki.html)
-  -   一篇关于如何成为Python高手的文章，是从 How to become a proficient
-  Python programmer 这篇文章翻译而来的
+  -   How to become a proficient Python programmer
   [http://www.zhizhihu.com/html/y2011/3093.html](http://www.zhizhihu.com/html/y2011/3093.html)
-  -   把图片的数据变换成数组
+  -   How to put picture date into arrays
   [http://blog.csdn.net/zhengkarl/article/details/5731317](http://blog.csdn.net/zhengkarl/article/details/5731317)
-  -   Python图形图像处理库的介绍之Image模块
-  [http://tojaoomy.iteye.com/blog/1413810](http://tojaoomy.iteye.com/blog/1413810)
-  -   微博关键字图片生成算法
-  [http://ued.ctrip.com/blog/?p=2471](http://ued.ctrip.com/blog/?p=2471)
-  -   Python Import模块
+  -   Introduction to Python PIL's image module  [http://tojaoomy.iteye.com/blog/1413810](http://tojaoomy.iteye.com/blog/1413810)
+  -   [http://ued.ctrip.com/blog/?p=2471](http://ued.ctrip.com/blog/?p=2471)
+  -   Import in Python
   [http://www.cnitblog.com/seeyeah/archive/2009/03/15/55440.html](http://www.cnitblog.com/seeyeah/archive/2009/03/15/55440.html)
-  -   Python 标准库——文件管理
+  -   Python standard library
   [http://www.cnblogs.com/vamei/archive/2012/09/14/2684775.html](http://www.cnblogs.com/vamei/archive/2012/09/14/2684775.html)
   -   Button Generater
   [http://hi.baidu.com/dongyuejiang/item/cbe759cee62cea080ad93ad3](http://hi.baidu.com/dongyuejiang/item/cbe759cee62cea080ad93ad3)
   -   Image Resizing <http://www.jqueryscript.net/layout/jQuery-Plugin-for-Client-Side-Image-Resizing-canvasResize.html>
 
-
+--------------------
+# 中文版
 
 Word\_Filling简介：
 =====================
@@ -92,15 +95,15 @@ I'm translating the documentation currently! The enlish version will come by 16t
   -   输出均改为Data-和二值图像（参考图）
   -   根据生成的Data来生成新的图片的数据
 
-  Dependency
-  ----------
+Dependency
+----------
 
-  Python，同时需要PIL（Python Image Library）的库。
+Python，同时需要PIL（Python Image Library）的库。
 
-  Algorithm的思路
-  ---------------
+Algorithm的思路
+---------------
 
-  遍历使用的是从左上角到右下角的遍历，第二次改用螺旋线来遍历。
+遍历使用的是从左上角到右下角的遍历，第二次改用螺旋线来遍历。
 
 ## 还可以完善的地方
 
