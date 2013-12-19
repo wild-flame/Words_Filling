@@ -1,6 +1,60 @@
 
 #DOCUMENTATION
 
+## Introduction
+
+This script manage to fill the words in a certain area of the picture automatically.
+
+## Usage
+
+Put the words data (jpeg or png format) in '../image/data/*', the script will load data from there automatically.
+
+Put the 0-1 digit picture in '../image/xxxxx.jpg', where words can only be written in area valued "1".
+
+Type in the terminal:
+
+    $ python main.py
+
+This will automatically generate *"input_data.csv"* and the preview picture named "test.png".
+
+Then you can type in the terminal
+
+    **$ python Generate_new_pic.py**
+
+It generate the new picture based on *"input_data.csv"*.
+
+## The demo results 
+
+  <img src='image/test_csv.png' width=100% />
+
+Here is a picture filled manually by  
+
+  <img src='image/01-0001~0142.jpg' width=100% />
+
+## Reference：
+
+  -   官方文档
+  [http://effbot.org/imagingbook/](http://effbot.org/imagingbook/)
+  -   数字图像处理PIL的一个实例
+  [http://blog.sina.com.cn/s/blog\_4b5039210100f6ki.html](http://blog.sina.com.cn/s/blog_4b5039210100f6ki.html)
+  -   一篇关于如何成为Python高手的文章，是从 How to become a proficient
+  Python programmer 这篇文章翻译而来的
+  [http://www.zhizhihu.com/html/y2011/3093.html](http://www.zhizhihu.com/html/y2011/3093.html)
+  -   把图片的数据变换成数组
+  [http://blog.csdn.net/zhengkarl/article/details/5731317](http://blog.csdn.net/zhengkarl/article/details/5731317)
+  -   Python图形图像处理库的介绍之Image模块
+  [http://tojaoomy.iteye.com/blog/1413810](http://tojaoomy.iteye.com/blog/1413810)
+  -   微博关键字图片生成算法
+  [http://ued.ctrip.com/blog/?p=2471](http://ued.ctrip.com/blog/?p=2471)
+  -   Python Import模块
+  [http://www.cnitblog.com/seeyeah/archive/2009/03/15/55440.html](http://www.cnitblog.com/seeyeah/archive/2009/03/15/55440.html)
+  -   Python 标准库——文件管理
+  [http://www.cnblogs.com/vamei/archive/2012/09/14/2684775.html](http://www.cnblogs.com/vamei/archive/2012/09/14/2684775.html)
+  -   Button Generater
+  [http://hi.baidu.com/dongyuejiang/item/cbe759cee62cea080ad93ad3](http://hi.baidu.com/dongyuejiang/item/cbe759cee62cea080ad93ad3)
+  -   Image Resizing <http://www.jqueryscript.net/layout/jQuery-Plugin-for-Client-Side-Image-Resizing-canvasResize.html>
+
+
 
 Word\_Filling简介：
 =====================
@@ -91,7 +145,5 @@ Word\_Filling简介：
   [http://www.cnblogs.com/vamei/archive/2012/09/14/2684775.html](http://www.cnblogs.com/vamei/archive/2012/09/14/2684775.html)
   -   Button Generater
   [http://hi.baidu.com/dongyuejiang/item/cbe759cee62cea080ad93ad3](http://hi.baidu.com/dongyuejiang/item/cbe759cee62cea080ad93ad3)
-
-
-  -	Image Resizing <http://www.jqueryscript.net/layout/jQuery-Plugin-for-Client-Side-Image-Resizing-canvasResize.html>
+  -   Image Resizing <http://www.jqueryscript.net/layout/jQuery-Plugin-for-Client-Side-Image-Resizing-canvasResize.html>
 
